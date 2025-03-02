@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-database
+spec:
+  replicas: {{ .Values.defaults.database.replicas }}
+  selector:
+    matchLabels:
+      app: my-app-database
+  template:
+    metadata:
+      labels:
+        app: my-app-database
+    spec:
+      containers:
+      - name: database
+        image: {{ .Values.defaults.database.image }}
+        ports:
+        - containerPort: {{ .Values.defaults.database.service.port }}
+        volumeMounts:
+        - name: storage
+          mountPath: /var/lib/database
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: my-app-database-pvc

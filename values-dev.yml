@@ -1,0 +1,12 @@
+env: dev
+frontend:
+  replicas: 1
+  image: "frontend-dev-image:latest"
+backend:
+  replicas: 1
+  image: "backend-dev-image:latest"
+database:
+  replicas: 1
+  image: "database-dev-image:latest"
+  storage:
+    size: 5Gi

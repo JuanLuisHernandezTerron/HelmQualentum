@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-frontend
+spec:
+  replicas: {{ .Values.defaults.frontend.replicas }}
+  selector:
+    matchLabels:
+      app: my-app-frontend
+  template:
+    metadata:
+      labels:
+        app: my-app-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: {{ .Values.defaults.frontend.image }}
+        ports:
+        - containerPort: {{ .Values.defaults.frontend.service.port }}

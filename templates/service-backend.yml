@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-backend
+spec:
+  type: {{ .Values.defaults.backend.service.type }}
+  selector:
+    app: my-app-backend
+  ports:
+    - protocol: TCP
+      port: {{ .Values.defaults.backend.service.port }}
+      targetPort: {{ .Values.defaults.backend.service.port }}

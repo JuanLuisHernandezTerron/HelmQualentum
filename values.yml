@@ -1,0 +1,24 @@
+defaults:
+  frontend:
+    image: "frontend-image:latest"
+    replicas: 2
+    service:
+      type: ClusterIP
+      port: 80
+
+  backend:
+    image: "backend-image:latest"
+    replicas: 2
+    service:
+      type: ClusterIP
+      port: 8080
+
+  database:
+    image: "database-image:latest"
+    replicas: 1
+    service:
+      type: ClusterIP
+      port: 5432
+    storage:
+      size: 10Gi
+      accessMode: ReadWriteOnce

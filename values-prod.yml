@@ -1,0 +1,12 @@
+env: prod
+frontend:
+  replicas: 4
+  image: "frontend-prod-image:latest"
+backend:
+  replicas: 4
+  image: "backend-prod-image:latest"
+database:
+  replicas: 2
+  image: "database-prod-image:latest"
+  storage:
+    size: 50Gi

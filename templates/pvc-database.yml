@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-app-database-pvc
+spec:
+  accessModes:
+    - {{ .Values.defaults.database.storage.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.defaults.database.storage.size }}
